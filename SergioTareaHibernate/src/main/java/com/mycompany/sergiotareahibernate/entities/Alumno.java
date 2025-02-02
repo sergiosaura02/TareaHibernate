@@ -103,6 +103,6 @@ public class Alumno implements Serializable{
 
     @Override
     public String toString() {
-        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", titulo=" + titulo + '}';
+        return "\n***** Alumno " + id + " ***** \n- Id: " + id + "\n- Nombre: " + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + "\n";
     }
 }
