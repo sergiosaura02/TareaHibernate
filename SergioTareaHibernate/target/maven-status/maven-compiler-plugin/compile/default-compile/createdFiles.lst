@@ -1,0 +1,9 @@
+com\mycompany\sergiotareahibernate\entities\Empresa.class
+com\mycompany\sergiotareahibernate\SergioTareaHibernate.class
+com\mycompany\sergiotareahibernate\DAO\EmpresaDAOImpl.class
+com\mycompany\sergiotareahibernate\DAO\EmpresaDAO.class
+com\mycompany\sergiotareahibernate\entities\Alumno.class
+com\mycompany\sergiotareahibernate\DAO\Repository.class
+com\mycompany\sergiotareahibernate\DAO\AlumnoDAO.class
+com\mycompany\sergiotareahibernate\utilities\HibernateUtil.class
+com\mycompany\sergiotareahibernate\DAO\AlumnoDAOImpl.class
