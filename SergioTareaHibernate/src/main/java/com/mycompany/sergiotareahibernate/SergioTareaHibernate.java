@@ -26,7 +26,7 @@ public class SergioTareaHibernate {
         
         AlumnoDAOImpl alumnoDAOImpl = new AlumnoDAOImpl();
         //MOSTRAR TODOS LOS ALUMNOS
-        //System.out.println(alumnoDAOImpl.findAll());
+        System.out.println(alumnoDAOImpl.findAll());
         
         //MOSTRAR ALUMNO POR ID
         //System.out.println(alumnoDAOImpl.findOneById(2));
