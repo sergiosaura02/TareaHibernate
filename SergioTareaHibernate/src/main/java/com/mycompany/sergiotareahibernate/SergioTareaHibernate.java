@@ -24,7 +24,7 @@ public class SergioTareaHibernate {
         
         //***** CONSULTAS SOBRE ALUMNOS *****
         
-        AlumnoDAOImpl alumnoDAOImpl = new AlumnoDAOImpl();
+        //AlumnoDAOImpl alumnoDAOImpl = new AlumnoDAOImpl();
         //MOSTRAR TODOS LOS ALUMNOS
         System.out.println(alumnoDAOImpl.findAll());
         
