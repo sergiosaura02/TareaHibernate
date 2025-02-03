@@ -31,4 +31,101 @@ public class Practica {
     private String descripcion;
     private Empresa empresa;
     private Alumno alumno;
+
+    public Practica(int id, Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
+        this.id = id;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.descripcion = descripcion;
+        this.empresa = empresa;
+        this.alumno = alumno;
+    }
+
+    public Practica(Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.descripcion = descripcion;
+        this.empresa = empresa;
+        this.alumno = alumno;
+    }
+
+    public Practica() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Practica other = (Practica) obj;
+        return this.id == other.id;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "\n***** Practica *****" + id + "\n- Fecha de inicio: " + fechaInicio + "\n- Fecha de fin: " + fechaFin + "\n- Descripcion: " + descripcion + "\n- Empresa: " + empresa + "\n- Alumno=" + alumno;
+    }
+    
 }

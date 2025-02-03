@@ -20,11 +20,11 @@ public class SergioTareaHibernate {
 
     public static void main(String[] args) {
         HibernateUtil.buildSessionFactory();
-        System.out.println("Se ha abierto la sesion");
+        //System.out.println("Se ha abierto la sesion");
         
         //***** CONSULTAS SOBRE ALUMNOS *****
         
-        //AlumnoDAOImpl alumnoDAOImpl = new AlumnoDAOImpl();
+        AlumnoDAOImpl alumnoDAOImpl = new AlumnoDAOImpl();
         //MOSTRAR TODOS LOS ALUMNOS
         //System.out.println(alumnoDAOImpl.findAll());
         
@@ -64,7 +64,7 @@ public class SergioTareaHibernate {
         //System.out.println(empresaDAOImpl.findBySector("Desarrollo Web"));
         
         //CERRAR SESION
-        //HibernateUtil.closeSessionFactory();
+        HibernateUtil.closeSessionFactory();
         System.out.println("Se ha cerrado la sesion");
         
     }
