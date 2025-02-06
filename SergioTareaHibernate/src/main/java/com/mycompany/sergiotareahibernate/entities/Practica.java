@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +31,11 @@ public class Practica {
     private Date fechaFin;
     @Column(name = "descripcion")
     private String descripcion;
+    @OneToOne
+    @JoinColumn(name = "empresa_id")
     private Empresa empresa;
+    @OneToOne
+    @JoinColumn(name = "alumno_id")
     private Alumno alumno;
 
     public Practica(int id, Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {

@@ -4,16 +4,17 @@
  */
 package com.mycompany.sergiotareahibernate.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,31 +23,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "alumno_candidato_practica")
-public class AlumnoCandidatoPractica {
-    @Id
-    @JoinColumn(name = "alumno_id")
+public class AlumnoCandidatoPractica implements Serializable{
+    @EmbeddedId
+    private CandidatoID id;
+    @ManyToOne
+    @JoinColumn(name = "alumno_id", insertable = false, updatable = false)
     private Alumno alumno;
-    @Id
+    @ManyToOne
+    @JoinColumn(name = "practica_id", insertable = false, updatable = false)
     private Practica practica;
     @Column(name = "fecha_solicitud")
-    private Date fechaSolicitud;
+    private LocalDate fechaSolicitud;
     @Column(name = "estado")
     private Estado estado;
 
-    public AlumnoCandidatoPractica(Alumno alumno, Practica practica, Date fechaSolicitud, Estado estado) {
-        this.alumno = alumno;
-        this.practica = practica;
-        this.fechaSolicitud = fechaSolicitud;
-        this.estado = estado;
-    }
-
-    public AlumnoCandidatoPractica(Practica practica, Date fechaSolicitud, Estado estado) {
-        this.practica = practica;
-        this.fechaSolicitud = fechaSolicitud;
-        this.estado = estado;
-    }
-
-    public AlumnoCandidatoPractica() {
+    public CandidatoID getId() {
+        return id;
     }
 
     public Alumno getAlumno() {
@@ -65,11 +57,11 @@ public class AlumnoCandidatoPractica {
         this.practica = practica;
     }
 
-    public Date getFechaSolicitud() {
+    public LocalDate getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(LocalDate fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
@@ -83,8 +75,8 @@ public class AlumnoCandidatoPractica {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.alumno);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -100,14 +92,13 @@ public class AlumnoCandidatoPractica {
             return false;
         }
         final AlumnoCandidatoPractica other = (AlumnoCandidatoPractica) obj;
-        return Objects.equals(this.alumno, other.alumno);
+        return Objects.equals(this.id, other.id);
     }
-
     
 
     @Override
     public String toString() {
-        return "\n***** AlumnoCandidatoPractica  con ID de alumno *****" + alumno.getId() + "\n- ID Alumno: " + alumno.getId() + "\n- ID Practica: " + practica.getId() + "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado;
+        return "\n***** Candidatura con ID de alumno *****" + alumno.getId() + "\n- ID Alumno: " + alumno.getId() + "\n- ID Practica: " + practica.getId() + "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado;
     }
     
     

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +31,13 @@ public class Alumno implements Serializable{
     private int edad;
     @Column(name = "titulo")
     private String titulo;
+    @OneToOne(mappedBy = "alumno")
+    private Practica practica;
+    @OneToOne(mappedBy = "empresa")
+    private Empresa empresa;
+    @OneToMany ()
+    private AlumnoCandidatoPractica candidato;
+    
 
     public Alumno(int id, String nombre, int edad, String titulo) {
         this.id = id;

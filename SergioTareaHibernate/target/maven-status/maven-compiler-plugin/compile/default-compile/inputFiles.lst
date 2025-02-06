@@ -2,9 +2,13 @@ C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\AlumnoDAOImpl.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\EmpresaDAO.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\EmpresaDAOImpl.java
+C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\PracticaDAO.java
+C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\PracticaDAOImpl.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\DAO\Repository.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\entities\Alumno.java
+C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\entities\AlumnoCandidatoPractica.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\entities\Empresa.java
+C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\entities\Estado.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\entities\Practica.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\SergioTareaHibernate.java
 C:\Users\dam\Documents\NetBeansProjects\TareaHibernate\SergioTareaHibernate\src\main\java\com\mycompany\sergiotareahibernate\utilities\HibernateUtil.java
