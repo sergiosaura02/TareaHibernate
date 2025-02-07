@@ -32,11 +32,13 @@ public class Practica {
     @Column(name = "descripcion")
     private String descripcion;
     @OneToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa;
-    @OneToOne
     @JoinColumn(name = "alumno_id")
     private Alumno alumno;
+    @OneToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
+    
+    
 
     public Practica(int id, Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
         this.id = id;
@@ -131,7 +133,7 @@ public class Practica {
     
     @Override
     public String toString() {
-        return "\n***** Practica *****" + id + "\n- Fecha de inicio: " + fechaInicio + "\n- Fecha de fin: " + fechaFin + "\n- Descripcion: " + descripcion + "\n- Empresa: " + empresa + "\n- Alumno=" + alumno;
+        return "\n***** Practica *****" + id + "\n- Fecha de inicio: " + fechaInicio + "\n- Fecha de fin: " + fechaFin + "\n- Descripcion: " + descripcion + "\n- Empresa: " + empresa + "\n- Alumno: " + alumno;
     }
     
 }

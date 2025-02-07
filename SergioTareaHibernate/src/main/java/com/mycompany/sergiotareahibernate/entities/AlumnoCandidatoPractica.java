@@ -12,6 +12,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,8 +36,27 @@ public class AlumnoCandidatoPractica implements Serializable{
     private Practica practica;
     @Column(name = "fecha_solicitud")
     private LocalDate fechaSolicitud;
-    @Column(name = "estado")
+    @Column(name = "estado", columnDefinition = "ENUM('Pendiente','Aceptado', 'Rechazado')")
+    @Enumerated(EnumType.STRING)
     private Estado estado;
+
+    public AlumnoCandidatoPractica() {
+    }
+
+    public AlumnoCandidatoPractica(Alumno alumno, Practica practica, LocalDate fechaSolicitud, Estado estado) {
+        this.alumno = alumno;
+        this.practica = practica;
+        this.fechaSolicitud = fechaSolicitud;
+        this.estado = estado;
+    }
+
+    public AlumnoCandidatoPractica(CandidatoID id, Alumno alumno, Practica practica, LocalDate fechaSolicitud, Estado estado) {
+        this.id = id;
+        this.alumno = alumno;
+        this.practica = practica;
+        this.fechaSolicitud = fechaSolicitud;
+        this.estado = estado;
+    }
 
     public CandidatoID getId() {
         return id;
@@ -76,7 +97,7 @@ public class AlumnoCandidatoPractica implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -95,12 +116,12 @@ public class AlumnoCandidatoPractica implements Serializable{
         return Objects.equals(this.id, other.id);
     }
     
+    
 
     @Override
     public String toString() {
-        return "\n***** Candidatura con ID de alumno *****" + alumno.getId() + "\n- ID Alumno: " + alumno.getId() + "\n- ID Practica: " + practica.getId() + "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado;
+        return "\n***** Candidato con ID de alumno "+ id.getAlumnoID() + " *****\n- Alumno ID: " + id.getAlumnoID() + "\n- Practica ID: " + id.getPracticaID() +
+                "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado;
     }
-    
-    
-    
+ 
 }

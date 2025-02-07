@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -33,37 +34,11 @@ public class Alumno implements Serializable{
     private String titulo;
     @OneToOne(mappedBy = "alumno")
     private Practica practica;
-    @OneToOne(mappedBy = "empresa")
-    private Empresa empresa;
-    @OneToMany ()
-    private AlumnoCandidatoPractica candidato;
-    
-
-    public Alumno(int id, String nombre, int edad, String titulo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.titulo = titulo;
-    }
-
-    public Alumno(String nombre, int edad, String titulo) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.titulo = titulo;
-    }
-
-    public Alumno() {
-    }
-    
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -88,10 +63,18 @@ public class Alumno implements Serializable{
         this.titulo = titulo;
     }
 
+    public Practica getPractica() {
+        return practica;
+    }
+
+    public void setPractica(Practica practica) {
+        this.practica = practica;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.id;
+        int hash = 5;
+        hash = 31 * hash + this.id;
         return hash;
     }
 
@@ -112,6 +95,8 @@ public class Alumno implements Serializable{
 
     @Override
     public String toString() {
-        return "\n***** Alumno " + id + " ***** \n- Id: " + id + "\n- Nombre: " + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + "\n";
+        return "\n***** Alumno " + id + " *****\n- Alumno ID:" + id +"\n- Nombre=" + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + "\n- Practica: " + practica;
     }
+    
+    
 }

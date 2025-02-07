@@ -9,5 +9,5 @@ package com.mycompany.sergiotareahibernate.entities;
  * @author Sergio
  */
 public enum Estado {
-    ACEPTADO, RECHAZADO, PENDIENTE
+    Aceptado, Pendiente, Rechazado
 }

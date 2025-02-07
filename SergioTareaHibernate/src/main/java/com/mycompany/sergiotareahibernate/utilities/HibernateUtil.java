@@ -4,8 +4,7 @@
  */
 package com.mycompany.sergiotareahibernate.utilities;
 
-import com.mycompany.sergiotareahibernate.entities.Alumno;
-import com.mycompany.sergiotareahibernate.entities.Empresa;
+import com.mycompany.sergiotareahibernate.entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -26,6 +25,11 @@ public class HibernateUtil {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Alumno.class);
         configuration.addAnnotatedClass(Empresa.class);
+        configuration.addAnnotatedClass(CandidatoID.class);
+        configuration.addAnnotatedClass(Practica.class);
+        configuration.addAnnotatedClass(AlumnoCandidatoPractica.class);
+
+
         
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
                 configuration.getProperties()).build();
