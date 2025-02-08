@@ -12,5 +12,5 @@ import java.util.List;
  * @author Sergio
  */
 public interface AlumnoDAO extends Repository<Alumno>{
-    
+    List<Alumno> findAllForTitulo(String titulo);
 }

@@ -11,5 +11,5 @@ import com.mycompany.sergiotareahibernate.entities.Practica;
  * @author Sergio
  */
 public interface PracticaDAO extends Repository<Practica>{
-    
+    void insertarAlumno(int idAlumno, int idPractica);
 }

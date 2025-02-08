@@ -5,6 +5,7 @@
 package com.mycompany.sergiotareahibernate.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,9 @@ public class Practica {
     @Column(name = "practica_id")
     private int id;
     @Column(name = "fecha_inicio")
-    private Date fechaInicio;
+    private LocalDate fechaInicio;
     @Column(name = "fecha_fin")
-    private Date fechaFin;
+    private LocalDate fechaFin;
     @Column(name = "descripcion")
     private String descripcion;
     @OneToOne
@@ -40,7 +41,7 @@ public class Practica {
     
     
 
-    public Practica(int id, Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
+    public Practica(int id, LocalDate fechaInicio, LocalDate fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -49,7 +50,7 @@ public class Practica {
         this.alumno = alumno;
     }
 
-    public Practica(Date fechaInicio, Date fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
+    public Practica(LocalDate fechaInicio, LocalDate fechaFin, String descripcion, Empresa empresa, Alumno alumno) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.descripcion = descripcion;
@@ -68,19 +69,19 @@ public class Practica {
         this.id = id;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -133,7 +134,8 @@ public class Practica {
     
     @Override
     public String toString() {
-        return "\n***** Practica *****" + id + "\n- Fecha de inicio: " + fechaInicio + "\n- Fecha de fin: " + fechaFin + "\n- Descripcion: " + descripcion + "\n- Empresa: " + empresa + "\n- Alumno: " + alumno;
+        String strAlumno = (alumno == null) ? "No tiene un alumno asignado" : alumno.getNombre();
+        return "\n\n***** Practica " + id + " *****\n- Fecha de inicio: " + fechaInicio + "\n- Fecha de fin: " + fechaFin + "\n- Descripcion: " + descripcion + "\n- Empresa: " + empresa.getNombre() + "\n- Alumno: " + strAlumno + "\n\n";
     }
     
 }

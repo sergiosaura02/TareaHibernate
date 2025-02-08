@@ -4,12 +4,15 @@
  */
 package com.mycompany.sergiotareahibernate.DAO;
 
+import com.mycompany.sergiotareahibernate.entities.Alumno;
 import com.mycompany.sergiotareahibernate.entities.AlumnoCandidatoPractica;
+import java.util.List;
 
 /**
  *
  * @author Sergio
  */
 public interface AlumnoCandidatoPracticaDAO extends Repository<AlumnoCandidatoPractica>{
-    
+    List<AlumnoCandidatoPractica> consultarCandidatosPractica(int idPractica);
+    void cambiarEstadoCandidato(int idAlumno, int idPractica, String estado);
 }

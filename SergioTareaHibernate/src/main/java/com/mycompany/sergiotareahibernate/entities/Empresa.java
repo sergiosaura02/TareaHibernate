@@ -94,7 +94,7 @@ public class Empresa implements Serializable{
 
     @Override
     public String toString() {
-        return "\n***** Empresa " + id + " ***** \n- Id: " + id + "\n- Nombre: " + nombre + "\n- Sector: " + sector + "\n";
+        return "\n\n***** Empresa " + id + " ***** \n- Id: " + id + "\n- Nombre: " + nombre + "\n- Sector: " + sector + "\n";
     }
     
     

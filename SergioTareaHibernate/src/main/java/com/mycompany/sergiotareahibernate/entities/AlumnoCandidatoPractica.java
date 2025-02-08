@@ -5,9 +5,7 @@
 package com.mycompany.sergiotareahibernate.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -43,19 +41,15 @@ public class AlumnoCandidatoPractica implements Serializable{
     public AlumnoCandidatoPractica() {
     }
 
-    public AlumnoCandidatoPractica(Alumno alumno, Practica practica, LocalDate fechaSolicitud, Estado estado) {
-        this.alumno = alumno;
-        this.practica = practica;
+    public AlumnoCandidatoPractica(CandidatoID id ,LocalDate fechaSolicitud, Estado estado) {
+        this.id = id;
         this.fechaSolicitud = fechaSolicitud;
         this.estado = estado;
     }
-
-    public AlumnoCandidatoPractica(CandidatoID id, Alumno alumno, Practica practica, LocalDate fechaSolicitud, Estado estado) {
+    
+    public AlumnoCandidatoPractica(CandidatoID id ,LocalDate fechaSolicitud) {
         this.id = id;
-        this.alumno = alumno;
-        this.practica = practica;
         this.fechaSolicitud = fechaSolicitud;
-        this.estado = estado;
     }
 
     public CandidatoID getId() {
@@ -120,8 +114,8 @@ public class AlumnoCandidatoPractica implements Serializable{
 
     @Override
     public String toString() {
-        return "\n***** Candidato con ID de alumno "+ id.getAlumnoID() + " *****\n- Alumno ID: " + id.getAlumnoID() + "\n- Practica ID: " + id.getPracticaID() +
-                "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado;
+        return "\n\n***** Candidato con ID de alumno "+ id.getAlumnoID() + " *****\n- Alumno ID: " + id.getAlumnoID() + "\n- Practica ID: " + id.getPracticaID() +
+                "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado + "\n\n";
     }
  
 }

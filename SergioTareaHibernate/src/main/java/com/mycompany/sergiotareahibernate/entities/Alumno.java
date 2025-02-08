@@ -35,6 +35,23 @@ public class Alumno implements Serializable{
     @OneToOne(mappedBy = "alumno")
     private Practica practica;
 
+    public Alumno() {
+    }
+
+    public Alumno(String nombre, int edad, String titulo) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.titulo = titulo;
+    }
+
+    public Alumno(int id, String nombre, int edad, String titulo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.titulo = titulo;
+    }
+
+    
     public int getId() {
         return id;
     }
@@ -95,7 +112,8 @@ public class Alumno implements Serializable{
 
     @Override
     public String toString() {
-        return "\n***** Alumno " + id + " *****\n- Alumno ID:" + id +"\n- Nombre=" + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + "\n- Practica: " + practica;
+        String strPractica = (practica != null) ? "\n- Practica: " + practica.getDescripcion() : "\n- No tiene practica";
+        return "\n\n***** Alumno " + id + " *****\n- Alumno ID: " + id +"\n- Nombre: " + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + strPractica + "\n\n";
     }
     
     

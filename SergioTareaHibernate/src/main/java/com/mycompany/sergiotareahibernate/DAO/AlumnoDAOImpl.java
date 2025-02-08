@@ -58,10 +58,17 @@ public class AlumnoDAOImpl implements AlumnoDAO {
             Alumno a = query.getSingleResult();
             return a;
         } catch (NoResultException ex) {
-            System.out.println("No se ha recuperado ningúm Alumno con el id: " + id);
+            System.out.println("No existe el Alumno con el id: " + id);
             System.out.println(ex.getMessage());
             return null;
         }
     }
-
+    @Override
+    public List<Alumno> findAllForTitulo(String titulo){
+        return HibernateUtil.getCurrentSession().
+                createQuery("FROM Alumno WHERE titulo = :titulo", Alumno.class).
+                setParameter("titulo", titulo.toUpperCase()).
+                getResultList();
+    }
+    
 }
