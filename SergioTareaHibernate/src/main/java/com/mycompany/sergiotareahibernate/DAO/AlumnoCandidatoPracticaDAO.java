@@ -14,5 +14,5 @@ import java.util.List;
  */
 public interface AlumnoCandidatoPracticaDAO extends Repository<AlumnoCandidatoPractica>{
     List<AlumnoCandidatoPractica> consultarCandidatosPractica(int idPractica);
-    void cambiarEstadoCandidato(int idAlumno, int idPractica, String estado);
+    void cambiarEstadoCandidato(Integer idAlumno, int idPractica, String estado);
 }

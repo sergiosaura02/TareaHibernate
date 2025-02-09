@@ -19,66 +19,79 @@ import org.hibernate.query.Query;
  */
 public class PracticaDAOImpl implements PracticaDAO {
 
-    @Override
-    public void update(Practica t) {
-        HibernateUtil.getCurrentSession().beginTransaction();
-        HibernateUtil.getCurrentSession().clear();
-        HibernateUtil.getCurrentSession().update(t);
-        HibernateUtil.getCurrentSession().getTransaction().commit();
-    }
+	@Override
+	public void update(Practica t) {
+		HibernateUtil.getCurrentSession().beginTransaction();
+		HibernateUtil.getCurrentSession().clear();
+		HibernateUtil.getCurrentSession().update(t);
+		HibernateUtil.getCurrentSession().getTransaction().commit();
+	}
 
-    @Override
-    public void delete(Practica t) {
-        HibernateUtil.getCurrentSession().beginTransaction();
-        HibernateUtil.getCurrentSession().clear();
-        HibernateUtil.getCurrentSession().delete(t);
-        HibernateUtil.getCurrentSession().getTransaction().commit();
-    }
+	@Override
+	public void delete(Practica t) {
+		HibernateUtil.getCurrentSession().beginTransaction();
+		HibernateUtil.getCurrentSession().clear();
+		HibernateUtil.getCurrentSession().delete(t);
+		HibernateUtil.getCurrentSession().getTransaction().commit();
+	}
 
-    @Override
-    public void save(Practica t) {
-        try {
-            HibernateUtil.getCurrentSession().beginTransaction();
-            HibernateUtil.getCurrentSession().clear();
-            HibernateUtil.getCurrentSession().save(t);
-            HibernateUtil.getCurrentSession().getTransaction().commit();
-        } catch (PersistenceException ex) {
-            System.out.println("Error al crear la practica.");
-            System.out.println("La empresa tiene que existir en la base de datos.");
-        }
+	@Override
+	public void save(Practica t) {
+		try {
+			HibernateUtil.getCurrentSession().beginTransaction();
+			HibernateUtil.getCurrentSession().clear();
+			HibernateUtil.getCurrentSession().save(t);
+			HibernateUtil.getCurrentSession().getTransaction().commit();
+		} catch (PersistenceException ex) {
+			System.out.println("Error al crear la practica.");
+			System.out.println("La empresa tiene que existir en la base de datos.");
+		}
 
-    }
+	}
 
-    @Override
-    public List<Practica> findAll() {
-        String strQuery = "select p from Practica p";
-        Query<Practica> query = HibernateUtil.getCurrentSession().createQuery(strQuery, Practica.class);
-        return query.getResultList();
-    }
+	@Override
+	public List<Practica> findAll() {
+		try {
+			String strQuery = "select p from Practica p";
+			Query<Practica> query = HibernateUtil.getCurrentSession().createQuery(strQuery, Practica.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			System.out.println("No se ha podido devolver los resultados de las prácticas.");
+			return null;
+		}
 
-    @Override
-    public Practica findOneById(int id) {
-        String strQuery = "select p from Practica p Where id = :id";
-        Query<Practica> query = HibernateUtil.getCurrentSession().createQuery(strQuery, Practica.class);
-        query.setParameter("id", id);
+	}
 
-        try {
-            Practica p = query.getSingleResult();
-            return p;
-        } catch (NoResultException ex) {
-            System.out.println("No se ha recuperado ninguna Practica con el id: " + id);
-            System.out.println(ex.getMessage());
-            return null;
-        }
-    }
+	@Override
+	public Practica findOneById(int id) {
+		String strQuery = "select p from Practica p Where id = :id";
+		Query<Practica> query = HibernateUtil.getCurrentSession().createQuery(strQuery, Practica.class);
+		query.setParameter("id", id);
 
-    @Override
-    public void insertarAlumno(int idAlumno, int idPractica) {
-        Alumno alumno = new AlumnoDAOImpl().findOneById(idAlumno);
-        PracticaDAOImpl practicaDAOImpl = new PracticaDAOImpl();
-        Practica practica = practicaDAOImpl.findOneById(idPractica);
-        practica.setAlumno(alumno);
-        practicaDAOImpl.update(practica);
-    }
+		try {
+			Practica p = query.getSingleResult();
+			return p;
+		} catch (NoResultException ex) {
+			System.out.println("No se ha recuperado ninguna Practica con el id: " + id);
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public void insertarAlumno(int idAlumno, int idPractica) {
+		try {
+			Alumno alumno = new AlumnoDAOImpl().findOneById(idAlumno);
+			PracticaDAOImpl practicaDAOImpl = new PracticaDAOImpl();
+			Practica practica = practicaDAOImpl.findOneById(idPractica);
+			practica.setAlumno(alumno);
+			practicaDAOImpl.update(practica);
+
+		} catch (NullPointerException e) {
+			System.out.println(
+					"No se ha podido insertar el alumno, asegurate de que tanto el alumno como la práctica sean válidos.");
+		}
+
+	}
 
 }

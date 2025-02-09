@@ -57,8 +57,16 @@ public class Practica {
         this.empresa = empresa;
         this.alumno = alumno;
     }
+    
 
-    public Practica() {
+    public Practica(LocalDate fechaInicio, LocalDate fechaFin, String descripcion, Empresa empresa) {
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.descripcion = descripcion;
+		this.empresa = empresa;
+	}
+
+	public Practica() {
     }
 
     public int getId() {
