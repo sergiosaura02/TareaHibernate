@@ -5,6 +5,7 @@
 package com.mycompany.sergiotareahibernate.utilities;
 
 import com.mycompany.sergiotareahibernate.entities.*;
+import java.sql.Statement;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -39,6 +40,12 @@ public class HibernateUtil {
     
     public static void openSession() {
         session = sessionFactory.openSession();
+        session.doWork(connection -> {
+            try (Statement stmt = connection.createStatement()) {
+                // Forzar la codificación utf8mb4 en la conexión
+                stmt.execute("SET NAMES utf8mb4;");
+            }
+        });
     }
 
     

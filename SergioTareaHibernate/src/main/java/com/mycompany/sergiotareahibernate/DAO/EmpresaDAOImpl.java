@@ -64,7 +64,7 @@ public class EmpresaDAOImpl implements EmpresaDAO{
     }
     
     public List<Empresa> findBySector(String sector){
-        String strQuery = "Select e from Empresa e Where sector = :sector";
+        String strQuery = "FROM Empresa WHERE sector = :sector";
         Query<Empresa> query = HibernateUtil.getCurrentSession().createQuery(strQuery, Empresa.class);
         query.setParameter("sector", sector);
         return query.getResultList();
