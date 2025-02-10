@@ -5,7 +5,9 @@
 package com.mycompany.sergiotareahibernate.DAO;
 
 import com.mycompany.sergiotareahibernate.entities.Alumno;
+import com.mycompany.sergiotareahibernate.entities.AlumnoCandidatoPractica;
 import com.mycompany.sergiotareahibernate.entities.Empresa;
+import com.mycompany.sergiotareahibernate.entities.Estado;
 import com.mycompany.sergiotareahibernate.entities.Practica;
 import com.mycompany.sergiotareahibernate.utilities.HibernateUtil;
 import java.util.List;
@@ -84,8 +86,21 @@ public class PracticaDAOImpl implements PracticaDAO {
 			Alumno alumno = new AlumnoDAOImpl().findOneById(idAlumno);
 			PracticaDAOImpl practicaDAOImpl = new PracticaDAOImpl();
 			Practica practica = practicaDAOImpl.findOneById(idPractica);
-			practica.setAlumno(alumno);
-			practicaDAOImpl.update(practica);
+			
+			AlumnoCandidatoPracticaDAOImpl alumnoCandidatoPracticaDAOImpl = new AlumnoCandidatoPracticaDAOImpl();
+			AlumnoCandidatoPractica alumnoCandidatoPractica = alumnoCandidatoPracticaDAOImpl.findOneById(idAlumno, idPractica);
+			
+			if(alumnoCandidatoPractica != null) {
+				System.out.println(alumnoCandidatoPractica);
+				alumnoCandidatoPractica.setEstado(Estado.Aceptado);
+				alumnoCandidatoPracticaDAOImpl.update(alumnoCandidatoPractica);
+				practica.setAlumno(alumno);
+				practicaDAOImpl.update(practica);
+			}else {
+				System.out.println("No se ha podido asignar el alumno con ID " + idAlumno + " a la práctica con ID " + idPractica);
+				System.out.println("Hay que cerciorarse de que exista una candidatura con el ID de alumno " + idAlumno + " e ID de práctica " + idPractica + ".");
+				System.out.println("Para poder insertar un alumno a una práctica es necesario que exista la candidatura.");
+			}
 
 		} catch (NullPointerException e) {
 			System.out.println(
