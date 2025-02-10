@@ -21,100 +21,100 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "alumno")
-public class Alumno implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "alumno_id")
-    private int id;
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "edad")
-    private int edad;
-    @Column(name = "titulo")
-    private String titulo;
-    @OneToOne(mappedBy = "alumno")
-    private Practica practica;
+public class Alumno implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "alumno_id")
+	private int id;
+	@Column(name = "nombre")
+	private String nombre;
+	@Column(name = "edad")
+	private int edad;
+	@Column(name = "titulo")
+	private String titulo;
+	@OneToOne(mappedBy = "alumno")
+	private Practica practica;
 
-    public Alumno() {
-    }
+	public Alumno() {
+	}
 
-    public Alumno(String nombre, int edad, String titulo) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.titulo = titulo;
-    }
+	public Alumno(String nombre, int edad, String titulo) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.titulo = titulo;
+	}
 
-    public Alumno(int id, String nombre, int edad, String titulo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.titulo = titulo;
-    }
+	public Alumno(int id, String nombre, int edad, String titulo) {
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.titulo = titulo;
+	}
 
-    
-    public int getId() {
-        return id;
-    }
-    
-    public String getNombre() {
-        return nombre;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public int getEdad() {
-        return edad;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+	public int getEdad() {
+		return edad;
+	}
 
-    public String getTitulo() {
-        return titulo;
-    }
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public Practica getPractica() {
-        return practica;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public void setPractica(Practica practica) {
-        this.practica = practica;
-    }
+	public Practica getPractica() {
+		return practica;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + this.id;
-        return hash;
-    }
+	public void setPractica(Practica practica) {
+		this.practica = practica;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Alumno other = (Alumno) obj;
-        return this.id == other.id;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 5;
+		hash = 31 * hash + this.id;
+		return hash;
+	}
 
-    @Override
-    public String toString() {
-        String strPractica = (practica != null) ? "\n- Practica: " + practica.getDescripcion() : "\n- No tiene practica";
-        return "\n\n***** Alumno " + id + " *****\n- Alumno ID: " + id +"\n- Nombre: " + nombre + "\n- Edad: " + edad + "\n- Titulo: " + titulo + strPractica + "\n\n";
-    }
-    
-    
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Alumno other = (Alumno) obj;
+		return this.id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		String strPractica = (practica != null) ? "\n- Practica: " + practica.getDescripcion()
+				: "\n- No tiene practica";
+		return "\n\n***** Alumno " + id + " *****\n- Alumno ID: " + id + "\n- Nombre: " + nombre + "\n- Edad: " + edad
+				+ "\n- Titulo: " + titulo + strPractica + "\n\n";
+	}
+
 }

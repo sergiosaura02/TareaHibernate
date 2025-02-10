@@ -23,99 +23,98 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "alumno_candidato_practica")
-public class AlumnoCandidatoPractica implements Serializable{
-    @EmbeddedId
-    private CandidatoID id;
-    @ManyToOne
-    @JoinColumn(name = "alumno_id", insertable = false, updatable = false)
-    private Alumno alumno;
-    @ManyToOne
-    @JoinColumn(name = "practica_id", insertable = false, updatable = false)
-    private Practica practica;
-    @Column(name = "fecha_solicitud")
-    private LocalDate fechaSolicitud;
-    @Column(name = "estado", columnDefinition = "ENUM('Pendiente','Aceptado', 'Rechazado')")
-    @Enumerated(EnumType.STRING)
-    private Estado estado;
+public class AlumnoCandidatoPractica implements Serializable {
+	@EmbeddedId
+	private CandidatoID id;
+	@ManyToOne
+	@JoinColumn(name = "alumno_id", insertable = false, updatable = false)
+	private Alumno alumno;
+	@ManyToOne
+	@JoinColumn(name = "practica_id", insertable = false, updatable = false)
+	private Practica practica;
+	@Column(name = "fecha_solicitud")
+	private LocalDate fechaSolicitud;
+	@Column(name = "estado", columnDefinition = "ENUM('Pendiente','Aceptado', 'Rechazado')")
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
 
-    public AlumnoCandidatoPractica() {
-    }
+	public AlumnoCandidatoPractica() {
+	}
 
-    public AlumnoCandidatoPractica(CandidatoID id ,LocalDate fechaSolicitud, Estado estado) {
-        this.id = id;
-        this.fechaSolicitud = fechaSolicitud;
-        this.estado = estado;
-    }
-    
-    public AlumnoCandidatoPractica(CandidatoID id ,LocalDate fechaSolicitud) {
-        this.id = id;
-        this.fechaSolicitud = fechaSolicitud;
-    }
+	public AlumnoCandidatoPractica(CandidatoID id, LocalDate fechaSolicitud, Estado estado) {
+		this.id = id;
+		this.fechaSolicitud = fechaSolicitud;
+		this.estado = estado;
+	}
 
-    public CandidatoID getId() {
-        return id;
-    }
+	public AlumnoCandidatoPractica(CandidatoID id, LocalDate fechaSolicitud) {
+		this.id = id;
+		this.fechaSolicitud = fechaSolicitud;
+	}
 
-    public Alumno getAlumno() {
-        return alumno;
-    }
+	public CandidatoID getId() {
+		return id;
+	}
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
+	public Alumno getAlumno() {
+		return alumno;
+	}
 
-    public Practica getPractica() {
-        return practica;
-    }
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
 
-    public void setPractica(Practica practica) {
-        this.practica = practica;
-    }
+	public Practica getPractica() {
+		return practica;
+	}
 
-    public LocalDate getFechaSolicitud() {
-        return fechaSolicitud;
-    }
+	public void setPractica(Practica practica) {
+		this.practica = practica;
+	}
 
-    public void setFechaSolicitud(LocalDate fechaSolicitud) {
-        this.fechaSolicitud = fechaSolicitud;
-    }
+	public LocalDate getFechaSolicitud() {
+		return fechaSolicitud;
+	}
 
-    public Estado getEstado() {
-        return estado;
-    }
+	public void setFechaSolicitud(LocalDate fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
+	}
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+	public Estado getEstado() {
+		return estado;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final AlumnoCandidatoPractica other = (AlumnoCandidatoPractica) obj;
-        return Objects.equals(this.id, other.id);
-    }
-    
-    
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		hash = 89 * hash + Objects.hashCode(this.id);
+		return hash;
+	}
 
-    @Override
-    public String toString() {
-        return "\n\n***** Candidato con ID de alumno "+ id.getAlumnoID() + " *****\n- Alumno ID: " + id.getAlumnoID() + "\n- Practica ID: " + id.getPracticaID() +
-                "\n- Fecha de solicitud: " + fechaSolicitud + "\n- Estado: " + estado + "\n\n";
-    }
- 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final AlumnoCandidatoPractica other = (AlumnoCandidatoPractica) obj;
+		return Objects.equals(this.id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "\n\n***** Candidato con ID de alumno " + id.getAlumnoID() + " *****\n- Alumno ID: " + id.getAlumnoID()
+				+ "\n- Practica ID: " + id.getPracticaID() + "\n- Fecha de solicitud: " + fechaSolicitud
+				+ "\n- Estado: " + estado + "\n\n";
+	}
+
 }
